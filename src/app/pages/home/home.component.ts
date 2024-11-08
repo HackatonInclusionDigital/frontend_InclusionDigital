@@ -4,6 +4,7 @@ import { ProductService } from './../../services/product.service';
 import { ProductResponse } from './../../interfaces/productResponse.interface';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,16 +15,30 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
   products: ProductResponse[] = [];
-
+  errorMessage: string = '';
+  isLoading: boolean = true;
+  
   constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((data: ProductResponse[]) => {
-      this.products = data;
+    this.productService.getAllProducts().pipe(
+      catchError((error) => {
+        // Manejo de errores de la API o problemas de conexión
+        this.errorMessage = 'Ocurrió un error al obtener los productos. Inténtalo más tarde.';
+        this.isLoading = false;
+        return of([]); // Retorna un array vacío en caso de error
+      })
+    ).subscribe((data: ProductResponse[]) => {
+      this.isLoading = false;
+      if (data.length === 0) {
+        this.errorMessage = 'No hay productos disponibles.';
+      } else {
+        this.products = data;
+      }
     });
   }
 
-  viewProductDetails(productId: number): void {
+  viewProductDetails(productId: string): void {
     this.router.navigate(['/product', productId]);
   }
 }

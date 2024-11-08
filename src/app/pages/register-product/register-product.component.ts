@@ -15,6 +15,7 @@ import { NavbarComponent } from './../nav-bar/nav-bar.component';
 })
 export class RegisterProductComponent {
   productForm: FormGroup;
+  id = "1";
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +27,8 @@ export class RegisterProductComponent {
       descripcion: ['', [Validators.required]],
       precio: [0, [Validators.required, Validators.min(5)]],
       stock: [0, [Validators.required, Validators.min(5)]],
-      categoria: ['', [Validators.required]]
+      categoria: ['', [Validators.required]],
+      usuario_id: [this.id]
     });
   }
 

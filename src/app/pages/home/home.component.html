@@ -3,7 +3,7 @@
 <div class="container flex flex-wrap justify-evenly">
   <div *ngFor="let product of products" 
        class="card w-1/4 p-4 m-4 bg-white shadow-md rounded-lg cursor-pointer"
-       (click)="viewProductDetails(product.id)">
+       (click)="viewProductDetails(product._id)">
     <div class="flex flex-col items-center mt-4">
       <span class="text-lg font-bold">{{ product.nombre }}</span>
       <span class="text-gray-500">{{ product.categoria }}</span>

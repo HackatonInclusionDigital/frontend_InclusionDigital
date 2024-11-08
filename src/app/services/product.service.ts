@@ -14,12 +14,12 @@ export class ProductService {
   constructor(private http: HttpClient) { }
   
   getAllProducts(): Observable<ProductResponse[]> {
-    return this.http.get<ProductResponse[]>(`${this.baseURL}registerProduct`);
+    return this.http.get<ProductResponse[]>(`${this.baseURL}products`);
   }
   getProductById(productId: number): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(`${this.baseURL}registerProduct/${productId}`);
+    return this.http.get<ProductResponse>(`${this.baseURL}products/${productId}`);
   }
   postRegisterProduct(product: ProductRequest): Observable<ProductResponse> {
-    return this.http.post<ProductResponse>(`${this.baseURL}registerProduct`, product);
+    return this.http.post<ProductResponse>(`${this.baseURL}products`, product);
   }
 }

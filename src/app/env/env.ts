@@ -1,7 +1,8 @@
 export const
 env  = {
-
-  baseURL : "http://localhost:8080/api/v1/",
+//10.120.67.122
+//https://505c-200-62-226-164.ngrok-free.app/api
+  baseURL : "https://505c-200-62-226-164.ngrok-free.app/api/",
   produccion: false
   
 }
