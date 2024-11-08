@@ -1,1 +1,17 @@
 <app-nav-bar></app-nav-bar>
+
+<div class="container flex flex-wrap justify-evenly">
+    <div *ngFor="let product of products" 
+         class="card w-1/4 p-4 m-4 bg-white shadow-md rounded-lg cursor-pointer"
+         (click)="viewProductDetails(product.id)">
+      <div class="flex justify-center">
+        <img [src]="product.imagen" alt="product" class="w-1/2">
+      </div>
+      <div class="flex flex-col items-center mt-4">
+        <span class="text-lg font-bold">{{ product.name }}</span>
+        <span class="text-gray-500">{{ product.status }}</span>
+        <span class="text-sm text-gray-400">{{ product.description }}</span>
+        <span class="text-xs text-gray-600">Owner: {{ product.productOwner }}</span>
+      </div>
+    </div>
+  </div>

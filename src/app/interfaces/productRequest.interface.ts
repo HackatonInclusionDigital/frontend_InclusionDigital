@@ -1,7 +1,7 @@
 export interface ProductRequest{
-    name: string;
-    description: string;
-    status: string;
-    productOwner: string;
-    team: string[];
+    nombre: string;
+    descripcion: string;
+    precio: number;
+    stock: number;
+    categoria: string;
 }

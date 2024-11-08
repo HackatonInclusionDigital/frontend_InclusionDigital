@@ -1,0 +1,68 @@
+
+<div class="page flex justify-center items-center w-full pt-12">
+    <app-nav-bar></app-nav-bar>
+    <div class="container mx-auto p-8 max-w-2xl bg-white shadow-md rounded-lg mt-5">
+        <h2 class="text-2xl font-bold mb-6 text-center">Registrar Producto</h2>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="grid grid-cols-2 gap-4">
+            <!-- Nombre -->
+            <div class="col-span-1">
+              <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+              <input id="nombre" type="text" formControlName="nombre" class="mt-1 block w-full" />
+              <div *ngIf="productForm.get('nombre')?.invalid && productForm.get('nombre')?.touched" class="text-red-500 text-sm">
+                <span *ngIf="productForm.get('nombre')?.errors?.['required']">El nombre es requerido.</span>
+                <span *ngIf="productForm.get('nombre')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</span>
+                <span *ngIf="productForm.get('nombre')?.errors?.['maxlength']">No puede exceder los 50 caracteres.</span>
+              </div>
+            </div>
+        
+            <!-- Precio -->
+            <div class="col-span-1">
+              <label for="precio" class="block text-sm font-medium text-gray-700">Precio</label>
+              <input id="precio" type="number" formControlName="precio" class="mt-1 block w-full" />
+              <div *ngIf="productForm.get('precio')?.invalid && productForm.get('precio')?.touched" class="text-red-500 text-sm">
+                <span *ngIf="productForm.get('precio')?.errors?.['required']">El precio es requerido.</span>
+                <span *ngIf="productForm.get('precio')?.errors?.['min']">Debe ser mayor o igual a 0.</span>
+              </div>
+            </div>
+        
+            <!-- Categoría -->
+            <div class="col-span-1">
+              <label for="categoria" class="block text-sm font-medium text-gray-700">Categoría</label>
+              <input id="categoria" type="text" formControlName="categoria" class="mt-1 block w-full" />
+              <div *ngIf="productForm.get('categoria')?.invalid && productForm.get('categoria')?.touched" class="text-red-500 text-sm">
+                <span *ngIf="productForm.get('categoria')?.errors?.['required']">La categoría es requerida.</span>
+                <span *ngIf="productForm.get('categoria')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</span>
+                <span *ngIf="productForm.get('categoria')?.errors?.['maxlength']">No puede exceder los 30 caracteres.</span>
+              </div>
+            </div>
+        
+            <!-- Stock -->
+            <div class="col-span-1">
+              <label for="stock" class="block text-sm font-medium text-gray-700">Stock</label>
+              <input id="stock" type="number" formControlName="stock" class="mt-1 block w-full" />
+              <div *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched" class="text-red-500 text-sm">
+                <span *ngIf="productForm.get('stock')?.errors?.['required']">El stock es requerido.</span>
+                <span *ngIf="productForm.get('stock')?.errors?.['min']">Debe ser mayor o igual a 0.</span>
+              </div>
+            </div>
+        
+            <!-- Descripción -->
+            <div class="col-span-2">
+              <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
+              <textarea id="descripcion" formControlName="descripcion" rows="4" class="mt-1 block w-full"></textarea>
+              <div *ngIf="productForm.get('descripcion')?.invalid && productForm.get('descripcion')?.touched" class="text-red-500 text-sm">
+                <span *ngIf="productForm.get('descripcion')?.errors?.['required']">La descripción es requerida.</span>
+                <span *ngIf="productForm.get('descripcion')?.errors?.['minlength']">Debe tener al menos 10 caracteres.</span>
+                <span *ngIf="productForm.get('descripcion')?.errors?.['maxlength']">No puede exceder los 200 caracteres.</span>
+              </div>
+            </div>
+        
+            <!-- Botón de Registrar Producto -->
+            <div class="col-span-2 flex justify-center mt-4">
+              <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none" [disabled]="productForm.invalid">Registrar Producto</button>
+            </div>
+          </form>
+      </div>
+</div>
+
+  
