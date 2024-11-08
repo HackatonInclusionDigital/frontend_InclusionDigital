@@ -1,15 +1,15 @@
-<nav class="fixed top-0 w-full bg-rojo shadow-md p-4 flex flex-col items-center justify-between">
-  <div class="flex w-full justify-evenly">
+<nav class="nav fixed top-0 left-0 w-full bg-rojo shadow-md p-4 flex flex-col items-center mb-9">
+  <div class="flex w-full justify-between px-8">
     <!-- Logo -->
-     <a href="">
-       <div class="flex items-center space-x-2">
-         <div class="logo flex w-20">
-           <img src="assets/image.png" alt="" class="w-full">
-         </div>
-         <span class="text-white font-bold text-lg">KUSAY AUTENTICIDAD PERUANA</span>
-       </div>
-     </a>
-  
+    <a href="">
+      <div class="flex items-center space-x-2">
+        <div class="logo flex w-20">
+          <img src="assets/image.png" alt="" class="w-full">
+        </div>
+        <span class="text-white font-bold text-lg">KUSAY AUTENTICIDAD PERUANA</span>
+      </div>
+    </a>
+
     <!-- Barra de búsqueda -->
     <div class="flex items-center border border-white rounded-full overflow-hidden w-1/2 h-10 mt-5">
       <span class="px-2 text-white">
@@ -23,11 +23,11 @@
     <!-- Icono de usuario con menú toggle -->
     <div class="relative flex items-center space-x-4">
       <svg (click)="toggleMenu()" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-9 cursor-pointer text-white " stroke="#ffffff">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
-
-        </g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H20M4 18H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-
-        </path> </g>
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M4 6H20M4 12H20M4 18H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
       </svg>
 
       <!-- Menú desplegable -->
@@ -35,18 +35,13 @@
         <a (click)="navigateToRegisterProduct()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Registrar Producto</a>
         <a (click)="logout()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Cerrar Sesión</a>
       </div>
-
-</div>
-
-
+    </div>
   </div>
 
   <!-- Barra de categorías -->
-  <div class="categories flex w-full justify-evenly mt-5 text-white">
-    <a href="#" class="hover:text-red-600 transition duration-200">Electronica</a>
-    <a href="#" class="hover:text-red-600 transition duration-200">Comida</a>
-    <a href="#" class="hover:text-red-600 transition duration-200">Casa</a>
-    <a href="#" class="hover:text-red-600 transition duration-200">Joyeria</a>
-</div>
+  <div class="categories flex w-full justify-evenly mt-5 text-white px-8">
+    <a href="#" class="hover:text-gray-400 transition duration-200">Categoria</a>
+    <a href="#" class="hover:text-gray-400 transition duration-200">Producto</a>
+    <a href="#" class="hover:text-gray-400 transition duration-200">Testimonio</a>
+  </div>
 </nav>
-

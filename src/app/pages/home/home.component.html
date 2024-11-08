@@ -1,16 +1,35 @@
-<app-nav-bar></app-nav-bar>
+<div class="flex flex-col items-center">
+    <app-nav-bar></app-nav-bar>
 
-<div class="container flex flex-wrap justify-evenly">
-  <div *ngFor="let product of products" 
-       class="card w-1/4 p-4 m-4 bg-white shadow-md rounded-lg cursor-pointer"
-       (click)="viewProductDetails(product._id)">
-    <div class="flex flex-col items-center mt-4">
-      <span class="text-lg font-bold">{{ product.nombre }}</span>
-      <span class="text-gray-500">{{ product.categoria }}</span>
-      <span class="text-sm text-gray-400">{{ product.descripcion }}</span>
-      <span class="text-xs text-gray-600">Precio: S/ {{ product.precio }}</span>
-      <span class="text-xs text-gray-600">Stock: {{ product.stock }}</span>
+    <section class="flex flex-col justify-center items-center w-full h-screen bg-cover bg-center text-center pt-20 relative" style="background-image: url('assets/background.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Capa de superposición oscura -->
+        
+        <div class="relative z-10 flex flex-col items-center text-white px-4">
+            <h1 class="text-4xl font-bold mb-4">Empoderando el talento peruano, llevando su arte al mundo</h1>
+            <p class="text-lg mb-6">Descubre productos auténticos hechos por mujeres peruanas. Compra con propósito, apoya el crecimiento local</p>
+            <button class="px-6 py-3 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition">Únete</button>
+        </div>
+    </section>
+
+    <!-- Lista de productos -->
+    <div class="flex flex-wrap justify-evenly mt-8">
+        <div *ngIf="isLoading" class="text-center text-gray-500 text-lg">Cargando productos...</div>
+        <div *ngIf="errorMessage" class="text-center text-red-500 text-lg">{{ errorMessage }}</div>
+        
+        <ng-container *ngIf="!isLoading && !errorMessage">
+            <div *ngFor="let product of products" 
+                 class="card w-1/4 p-4 m-4 bg-white shadow-md rounded-lg cursor-pointer"
+                 (click)="viewProductDetails(product._id)">
+                <div class="flex flex-col items-center mt-4">
+                    <span class="text-lg font-bold">{{ product.nombre }}</span>
+                    <span class="text-gray-500">{{ product.categoria }}</span>
+                    <span class="text-sm text-gray-400">{{ product.descripcion }}</span>
+                    <span class="text-xs text-gray-600">Precio: S/ {{ product.precio }}</span>
+                    <span class="text-xs text-gray-600">Stock: {{ product.stock }}</span>
+                </div>
+            </div>
+        </ng-container>
     </div>
-  </div>
 </div>
+
 

@@ -11,7 +11,7 @@ import { NavbarComponent } from './../nav-bar/nav-bar.component';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, NavbarComponent], 
   templateUrl: './register-product.component.html',
-  styleUrls: ['./register-product.component.css']  // Cambiado a 'styleUrls' en plural
+  styleUrls: ['./register-product.component.css']
 })
 export class RegisterProductComponent {
   productForm: FormGroup;
@@ -23,11 +23,11 @@ export class RegisterProductComponent {
     private router: Router
   ) {
     this.productForm = this.fb.group({
-      nombre: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
-      precio: [0, [Validators.required, Validators.min(5)]],
-      stock: [0, [Validators.required, Validators.min(5)]],
-      categoria: ['', [Validators.required]],
+      nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      descripcion: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
+      precio: [0, [Validators.required, Validators.min(10)]], // Precio mínimo de 10
+      stock: [0, [Validators.required, Validators.min(10)]],  // Stock mínimo de 10 unidades
+      categoria: ['', [Validators.required]], // Select de categoría
       usuario_id: [this.id]
     });
   }
