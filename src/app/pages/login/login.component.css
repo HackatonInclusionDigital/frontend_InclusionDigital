@@ -1,9 +1,23 @@
 .container {
   height: 100vh;
   width: 100vw;
-
 }
 
 .loginForm {
-  max-width: 20%;
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bg-rojo{
+  background-color: #E02130;
+  :hover{
+    background-color: #810b15;
+  }
 }
