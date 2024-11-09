@@ -1,3 +1,4 @@
+// src/app/pages/product-detail/product-detail.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductResponse } from './../../interfaces/productResponse.interface';
@@ -28,10 +29,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    const productId = "672ed4a82c538afd89360832"; // para pruebas
-
+    // Obtener el ID del producto desde localStorage
+    const productId = localStorage.getItem('productId');
+    
     if (productId) {
+      // Hacer la solicitud para obtener el producto por ID
       this.productService.getProductById(productId).subscribe({
         next: (data: ProductResponse) => {
           console.log('Producto encontrado:', data);

@@ -1,4 +1,4 @@
-<nav class="nav fixed top-0 left-0 w-full bg-rojo shadow-md p-4 flex flex-col items-center mb-9">
+<nav class="nav fixed top-0 left-0 w-full bg-rojo shadow-md p-4 flex flex-col items-center ">
   <div class="flex w-full justify-between px-8">
     <!-- Logo -->
     <a href="">
@@ -6,7 +6,7 @@
         <div class="logo flex w-20">
           <img src="assets/image.png" alt="" class="w-full">
         </div>
-        <span class="text-white font-bold text-lg">KUSAY AUTENTICIDAD PERUANA</span>
+        <span class="text-white font-bold text-lg">KAUSAY </span>
       </div>
     </a>
 
@@ -17,7 +17,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 10-12 0 6 6 0 0012 0z" />
         </svg>
       </span>
-      <input type="text" placeholder="What are you looking for?" class="p-2 w-full focus:outline-none h-full">
+      <input type="text" placeholder="Que estas buscando?" class="p-2 w-full focus:outline-none h-full">
     </div>
 
     <!-- Icono de usuario con menú toggle -->
@@ -36,17 +36,26 @@
       </div>
 
             <!-- Icono de usuario y cierre de sesión -->
-        <div class="flex items-center space-x-4">
+        <div class="flex justify-evenly items-center space-x-4 text-white">
           <span *ngIf="userName">{{ userName }}</span>
-          <button (click)="logout()" class="bg-white text-rojo p-2 rounded-full">
-            <img src="assets/user-icon.svg" alt="Usuario" class="w-6 h-6">
+
+          <button (click)="logout()" class="flex flex-col text-rojo p-2 rounded-full justify-center items-center ">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-9">
+                <g id="SVGRepo_bgCarrier" stroke-width="2"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                 </g>
+              </svg>
+              <p class="text-white">Cerrar Sesion</p>
           </button>
+
          </div>
     </div>
   </div>
 
   <!-- Barra de categorías -->
-  <div class="categories flex w-full justify-evenly mt-5 text-white px-8">
+  <div class="categories flex w-full justify-evenly mt-5 text-white px-8 text-2xl">
     <a href="#" class="hover:text-gray-400 transition duration-200">Categoria</a>
     <a href="#" class="hover:text-gray-400 transition duration-200">Producto</a>
     <a href="#" class="hover:text-gray-400 transition duration-200">Testimonio</a>

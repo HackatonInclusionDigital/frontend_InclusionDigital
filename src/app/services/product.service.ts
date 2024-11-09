@@ -36,10 +36,10 @@ export class ProductService {
   postRegisterProduct(product: FormData): Observable<any> {
     return this.http.post<ProductResponse>(`${this.baseURL}products`, product);
   }
-  getProductById(id: String): Observable<ProductResponse> {
+  getProductById(id: string): Observable<ProductResponse> {
     return this.http.get<ProductResponse>(`${this.baseURL}products/${id}`);
   }
-
+  
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error desconocido';
 

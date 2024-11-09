@@ -61,6 +61,7 @@ export class HomeComponent implements OnInit {
   
 
   viewProductDetails(productId: string): void {
+    localStorage.setItem('productId', productId);
     this.router.navigate(['/product', productId]);
   }
 }

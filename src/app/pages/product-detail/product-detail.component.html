@@ -4,7 +4,10 @@
   <div *ngIf="product" class="product-container container mx-auto p-8 flex justify-center items-center border border-gray-300 rounded-lg shadow-md mt-20 mb-10">
     <!-- Columna de la imagen -->
     <div class="img-container w-1/2 p-4 flex justify-center">
-      <img src="/assets/product.jpeg" alt="Imagen del producto" class="object-contain max-h-96">
+      <img *ngIf="product.imagenes && product.imagenes.length > 0"
+                    [src]="'http://localhost:3000/' + product.imagenes[0]"
+                    alt="Primera imagen del producto"
+                    class="w-full h-auto">
     </div>
     
     <!-- Columna de la descripción -->
@@ -24,7 +27,6 @@
 
   <!-- Mensaje cuando el producto no está disponible -->
   <div *ngIf="!product" class="product-not-found container mx-auto p-8 flex flex-col items-center justify-center text-center border border-gray-300 rounded-lg shadow-md mt-20">
-    <img src="/assets/no-product.png" alt="Sin producto" class="w-32 h-32 mb-4">
     <h2 class="text-2xl font-semibold text-gray-700 mb-2">Producto no disponible</h2>
     <p class="text-gray-500 mb-4">El producto que estás buscando no se encuentra disponible en este momento.</p>
     <a routerLink="/" class="back-to-home-button mt-2 py-2 px-4 bg-red-600 text-white rounded-full hover:bg-red-700 transition">

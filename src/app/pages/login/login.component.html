@@ -1,36 +1,50 @@
-<div class="container flex flex-col justify-center items-center h-screen">
-  <div class="loginForm flex flex-col bg-white p-6 shadow-md rounded-lg">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <h2 class="text-2xl font-bold text-center mb-4">Iniciar Sesión</h2>
-      
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-        <input type="email" id="email" formControlName="email" class="mt-1 block w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"/>
-        <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="text-red-500 text-sm">
-          <p *ngIf="loginForm.get('email')?.errors?.['required']">El correo es obligatorio.</p>
-          <p *ngIf="loginForm.get('email')?.errors?.['email']">Debe ingresar un correo válido.</p>
-        </div>
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  <div class="login-container flex flex-col items-center justify-center bg-red-600 text-white p-10 rounded-lg shadow-lg">
+      <h1 class="text-4xl font-bold mb-4">Kausay</h1>
+      <img src="/assets/image.png" alt="Logo" class="w-24 h-24 mb-4" />
+      <h2 class="text-xl font-semibold mb-2">¡Bienvenido!</h2>
+      <h3 class="text-lg mb-6">Iniciar Sesión</h3>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-full max-w-xs">
+          <div class="mb-4">
+              <input
+                  type="email"
+                  formControlName="email"
+                  placeholder="Email"
+                  class="w-full p-3 rounded-lg text-black focus:outline-none"
+              />
+              <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="text-red-500 text-sm">
+                  <p *ngIf="loginForm.get('email')?.errors?.['required']">El correo es obligatorio.</p>
+                  <p *ngIf="loginForm.get('email')?.errors?.['email']">Debe ingresar un correo válido.</p>
+              </div>
+          </div>
+
+          <div class="mb-4">
+              <input
+                  type="password"
+                  formControlName="password"
+                  placeholder="Contraseña"
+                  class="w-full p-3 rounded-lg text-black focus:outline-none"
+              />
+              <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-red-500 text-sm">
+                  <p *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</p>
+                  <p *ngIf="loginForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</p>
+              </div>
+          </div>
+
+          <button
+              type="submit"
+              class="w-full bg-gray-300 text-black py-2 rounded-lg mt-4 hover:bg-gray-400 transition"
+              [disabled]="loginForm.invalid">
+              Ingresar
+          </button>
+
+          <div *ngIf="errorMessage" class="text-red-500 text-sm text-center mt-4">{{ errorMessage }}</div>
+      </form>
+
+      <div class="mt-6 text-sm text-center">
+          <a href="#" class="text-gray-200 underline">¿Olvidaste tu contraseña?</a>
+          <p>No tienes cuenta, <a href="#" class="text-gray-200 underline">Regístrate Aquí</a></p>
       </div>
-
-      <div class="mb-4">
-        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
-        <input type="password" id="password" formControlName="password" class="mt-1 block w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"/>
-        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-red-500 text-sm">
-          <p *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</p>
-          <p *ngIf="loginForm.get('password')?.errors?.['minlength']">Debe tener al menos 6 caracteres.</p>
-        </div>
-      </div>
-
-      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors duration-200" [disabled]="loginForm.invalid">
-        Iniciar Sesión
-      </button>
-    </form>
-  </div>
-
-  <!-- Modal de éxito -->
-  <div *ngIf="showModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-    <div class="bg-white p-4 rounded shadow-lg text-center">
-      <p class="text-green-600 font-bold">Inicio de sesión satisfactorio</p>
-    </div>
   </div>
 </div>
