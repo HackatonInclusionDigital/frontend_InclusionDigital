@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginRequest } from '../interfaces/loginRequest.interface';
+import { LoginResponse } from '../interfaces/loginResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  login(request: LoginRequest): Observable<any> {
-    return this.http.post<any>(`${this.baseURL}/login`, request);
+  login(request: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.baseURL}/login`, request);
   }
 }

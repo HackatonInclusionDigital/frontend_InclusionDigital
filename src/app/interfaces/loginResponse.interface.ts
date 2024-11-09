@@ -1,10 +1,9 @@
 export interface LoginResponse {
     token: string;
     user: {
-        _id: string;
-        name: string;
+        id: number;
+        nombre: string;
         email: string;
         role: string;
-        team: string;
     };
 }
