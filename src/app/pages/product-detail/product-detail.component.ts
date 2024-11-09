@@ -28,6 +28,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     const productId = "672ed4a82c538afd89360832"; // para pruebas
 
     if (productId) {
