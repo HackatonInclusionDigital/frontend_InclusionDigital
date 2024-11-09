@@ -1,15 +1,15 @@
+//src/app/pages/home/home.component.ts
 import { NavbarComponent } from './../nav-bar/nav-bar.component';
 import { Component, OnInit, inject } from '@angular/core';
 import { ProductService } from './../../services/product.service';
 import { ProductResponse } from './../../interfaces/productResponse.interface';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, HttpClientModule], 
+  imports: [CommonModule, NavbarComponent], 
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -30,21 +30,35 @@ export class HomeComponent implements OnInit {
   private obtenerProductos(): void {
     this.productService.getAllProducts().subscribe({
       next: (response) => {
-        console.log(response);
-        this.isLoading = false;
-        if (response.length === 0) {
-          this.errorMessage = 'No hay productos disponibles.';
-        } else {
+        console.log('Respuesta completa:', response);
+        console.log('Tipo de respuesta:', typeof response);
+        console.log('Es array?:', Array.isArray(response));
+        
+        if (Array.isArray(response)) {
           this.products = response;
+          this.errorMessage = this.products.length === 0 ? 'No hay productos disponibles.' : '';
+        } else {
+          console.error('La respuesta no es un array:', response);
+          this.errorMessage = 'Error en el formato de datos recibidos';
         }
+        this.isLoading = false;
       },
       error: (error) => {
-        console.error('Error al obtener los productos', error);
-        this.errorMessage = 'Ocurrió un error al obtener los productos. Inténtalo más tarde.';
+        console.error('Error detallado:', {
+          status: error.status,
+          statusText: error.statusText,
+          message: error.message,
+          error: error.error
+        });
+        this.errorMessage = `Error al obtener los productos: ${error.message || 'Error desconocido'}`;
+        this.isLoading = false;
+      },
+      complete: () => {
         this.isLoading = false;
       }
     });
   }
+  
 
   viewProductDetails(productId: string): void {
     this.router.navigate(['/product', productId]);

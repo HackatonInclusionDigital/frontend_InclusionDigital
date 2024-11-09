@@ -1,9 +1,12 @@
 .container {
     max-width: 600px;
+    height: 95vh;
   }
   
   img {
-    max-height: 300px;
-    object-fit: contain;
+    width: 50vw;
+  }
+  .descripcion {
+    width: 50vw;
   }
   

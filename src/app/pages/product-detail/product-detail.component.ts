@@ -4,11 +4,12 @@ import { ProductResponse } from './../../interfaces/productResponse.interface';
 import { ProductService } from './../../services/product.service';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
