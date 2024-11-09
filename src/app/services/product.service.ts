@@ -12,7 +12,7 @@ import { tap, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-  
+
   private basketItemsSubject = new BehaviorSubject<ProductResponse[]>([]);
   basketItems$ = this.basketItemsSubject.asObservable();
   private baseURL = env.baseURL;
@@ -36,7 +36,7 @@ export class ProductService {
   postRegisterProduct(product: ProductRequest): Observable<ProductResponse> {
     return this.http.post<ProductResponse>(`${this.baseURL}products`, product);
   }
-  getProductById(id: number): Observable<ProductResponse> {
+  getProductById(id: string): Observable<ProductResponse> {
     return this.http.get<ProductResponse>(`${this.baseURL}products/${id}`);
   }
 
