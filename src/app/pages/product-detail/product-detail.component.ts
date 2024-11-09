@@ -5,11 +5,12 @@ import { ProductService } from './../../services/product.service';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../nav-bar/nav-bar.component';
+import { BasketProductComponent } from '../basket-product/basket-product.component';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, BasketProductComponent],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -21,10 +22,9 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductService
   ) {}
 
-  addToCart(): void {
+  addToBasket(): void {
     this.productService.addProductToBasket(this.product);
   }
-
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));
     if (productId) {

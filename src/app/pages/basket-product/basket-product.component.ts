@@ -3,6 +3,7 @@ import { ProductResponse } from '../../interfaces/productResponse.interface';
 import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-basket-product',
   templateUrl: './basket-product.component.html',
@@ -11,12 +12,17 @@ import { CommonModule } from '@angular/common';
 })
 export class BasketProductComponent implements OnInit {
   basketItems: ProductResponse[] = [];
+  isCollapsed = false;
 
-  constructor(private basketService: ProductService) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.basketService.basketItems$.subscribe((items) => {
+    this.productService.basketItems$.subscribe((items) => {
       this.basketItems = items;
     });
+  }
+
+  toggleCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

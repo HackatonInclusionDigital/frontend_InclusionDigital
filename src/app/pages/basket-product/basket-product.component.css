@@ -1,0 +1,7 @@
+.basket {
+    transition: transform 0.3s ease;
+  }
+  .basket.collapsed {
+    transform: translateX(100%);
+  }
+  

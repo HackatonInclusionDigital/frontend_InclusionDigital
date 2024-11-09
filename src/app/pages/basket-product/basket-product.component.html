@@ -1,13 +1,20 @@
-<div class="basket fixed right-0 top-0 h-full w-80 bg-white shadow-lg p-4 flex flex-col">
+<div *ngIf="basketItems.length" class="basket fixed right-0 top-0 h-full w-80 bg-white shadow-lg p-4 flex flex-col" [class.collapsed]="isCollapsed">
+    <button class="self-end text-gray-500 hover:text-gray-700" (click)="toggleCollapse()">&times;</button>
     <h3 class="text-xl font-semibold mb-4">Carrito de Compras</h3>
     <ul class="overflow-y-auto flex-grow">
-        <li *ngFor="let item of basketItems" class="mb-3">
-            <span class="font-semibold">{{ item.nombre }}</span> - S/ {{ item.precio }}
-        </li>
+      <li *ngFor="let item of basketItems" class="mb-3">
+        <span class="font-semibold">{{ item.nombre }}</span> - S/ {{ item.precio }}
+      </li>
     </ul>
     <div class="mt-4">
-        <button class="w-full py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition">
-            Ir al Pago
-        </button>
+      <button class="w-full py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition">
+        Ir al Pago
+      </button>
     </div>
-</div>
+  </div>
+  
+  <!-- Botón flotante para mostrar el carrito cuando esté colapsado -->
+  <button *ngIf="isCollapsed" class="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition" (click)="toggleCollapse()">
+    🛒
+  </button>
+  
