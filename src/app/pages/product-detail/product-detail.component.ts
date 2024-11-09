@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductResponse } from './../../interfaces/productResponse.interface';
 import { ProductService } from './../../services/product.service';
@@ -14,12 +14,16 @@ import { NavbarComponent } from '../nav-bar/nav-bar.component';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
-  product: ProductResponse | null = null;
+  @Input() product!: ProductResponse;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService
   ) {}
+
+  addToCart(): void {
+    this.productService.addProductToBasket(this.product);
+  }
 
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));

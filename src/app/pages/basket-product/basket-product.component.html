@@ -1,0 +1,13 @@
+<div class="basket fixed right-0 top-0 h-full w-80 bg-white shadow-lg p-4 flex flex-col">
+    <h3 class="text-xl font-semibold mb-4">Carrito de Compras</h3>
+    <ul class="overflow-y-auto flex-grow">
+        <li *ngFor="let item of basketItems" class="mb-3">
+            <span class="font-semibold">{{ item.nombre }}</span> - S/ {{ item.precio }}
+        </li>
+    </ul>
+    <div class="mt-4">
+        <button class="w-full py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition">
+            Ir al Pago
+        </button>
+    </div>
+</div>

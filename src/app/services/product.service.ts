@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ProductResponse } from '../interfaces/productResponse.interface';
 import { ProductRequest } from '../interfaces/productRequest.interface';
 import { env } from '../env/env';
@@ -11,6 +12,9 @@ import { tap, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
+  
+  private basketItemsSubject = new BehaviorSubject<ProductResponse[]>([]);
+  basketItems$ = this.basketItemsSubject.asObservable();
   private baseURL = env.baseURL;
 
   constructor(private http: HttpClient) {
@@ -51,4 +55,10 @@ export class ProductService {
     console.error(errorMessage);
     return throwError(() => new Error(errorMessage));
   }
+
+  addProductToBasket(product: ProductResponse): void {
+    const currentItems = this.basketItemsSubject.getValue();
+    this.basketItemsSubject.next([...currentItems, product]);
+  }
+
 }
