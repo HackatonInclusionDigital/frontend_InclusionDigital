@@ -1,7 +1,7 @@
 export interface UserRequest {
-    name: string;
+    nombre: string;
     email: string;
-    password: string;
-    role: string;
-    team: string;
+    contrasena: string;
+    rol: string;
+    documento: string
 }

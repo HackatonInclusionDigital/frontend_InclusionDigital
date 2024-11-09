@@ -5,11 +5,12 @@ import { ProductService } from './../../services/product.service';
 import { ProductResponse } from './../../interfaces/productResponse.interface';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CheckListComponent } from '../check-list/check-list.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NavbarComponent], 
+  imports: [CommonModule, NavbarComponent, CheckListComponent], 
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -59,7 +60,12 @@ export class HomeComponent implements OnInit {
     });
   }
   
-
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
+  }
+  navigateToRegister() : void{
+    this.router.navigate(['/register-user']);
+  }
   viewProductDetails(productId: string): void {
     localStorage.setItem('productId', productId);
     this.router.navigate(['/product', productId]);

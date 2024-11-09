@@ -1,15 +1,24 @@
 <div class="flex flex-col items-center">
+    <div class="absolute z-20">
+        <app-check-list></app-check-list>
+    </div>
     <app-nav-bar></app-nav-bar>
 
-    <section class="flex flex-col justify-center items-center w-full h-screen bg-cover bg-center text-center pt-20 relative" style="background-image: url('assets/background.jpg');">
-        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Capa de superposición oscura -->
-
+    <section class="flex flex-col bg-imagen justify-center items-center w-full h-screen bg-cover bg-center text-center pt-20 relative">
+        <!-- Capa de superposición oscura -->
+        <div class="absolute inset-0 bg-black opacity-50"></div> 
+    
+        <!-- Contenido principal -->
         <div class="relative z-10 flex flex-col items-center text-white px-4">
             <h1 class="text-4xl font-bold mb-4">Empoderando el talento peruano, llevando su arte al mundo</h1>
             <p class="text-lg mb-6">Descubre productos auténticos hechos por mujeres peruanas. Compra con propósito, apoya el crecimiento local</p>
-            <button class="px-6 py-3 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition">Únete</button>
+            
+            <button (click)="navigateToRegister()" class="px-6 py-3 bg-red-600 text-white text-xl font-bold rounded-full hover:bg-red-700 transition">
+                Únete
+            </button>
         </div>
-    </section>
+    </section>    
+    
 
     <!-- Lista de productos -->
      <section class="tamaño">

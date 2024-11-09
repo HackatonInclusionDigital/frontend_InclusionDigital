@@ -1,0 +1,36 @@
+.check-list {
+    max-width: 250px;
+    width: 100%;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+  }
+  
+  .check-list h1 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+  }
+  
+  .check-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .check-list li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .check-list li .icon {
+    display: inline-flex;
+    align-items: center;
+  }
+  

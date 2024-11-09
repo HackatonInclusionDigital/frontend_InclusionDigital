@@ -1,0 +1,10 @@
+/* Añadir un estilo general al fondo rojo */
+.bg-red-600 {
+    background-color: #e3342f;
+  }
+  
+  /* Estilos adicionales para ajustar los inputs */
+  input::placeholder {
+    color: #c0c0c0;
+  }
+  

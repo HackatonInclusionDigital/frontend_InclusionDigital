@@ -1,3 +1,9 @@
 .tamaño{
-    height: 90vh;
+    height: 80vh;
+}
+.bg-imagen {
+    background-image: url('/assets/image4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
