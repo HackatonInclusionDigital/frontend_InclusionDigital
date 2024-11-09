@@ -13,3 +13,29 @@
   .bg-rojo{
     background-color: #E02130;
 }
+
+.product-container {
+  max-width: 800px;
+}
+
+.img-container {
+  max-width: 50%;
+}
+
+.descripcion-container {
+  max-width: 50%;
+  padding: 0 2rem;
+}
+
+.add-to-cart-button {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.product-not-found {
+  max-width: 500px;
+}
+
+.back-to-home-button {
+  font-size: 1rem;
+}

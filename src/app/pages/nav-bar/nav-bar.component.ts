@@ -13,8 +13,14 @@ import { CommonModule } from '@angular/common';
 
 export class NavbarComponent {
   menuOpen = false;
+  userName: string | null = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.userName = JSON.parse(user).nombre;
+    }
+  }
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -33,8 +39,9 @@ export class NavbarComponent {
     this.menuOpen = false;
   }
 
-  logout() {
-    // Lógica para cerrar sesión
-    this.menuOpen = false;
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }
