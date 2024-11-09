@@ -28,16 +28,16 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const productId = "672ed4a82c538afd89360832";
+    const productId = this.route.snapshot.paramMap.get('id') || "672ed4a82c538afd89360832"; // para pruebas
 
     if (productId) {
       this.productService.getProductById(productId).subscribe({
         next: (data: ProductResponse) => {
           console.log('Producto encontrado:', data);
-          this.product = data;  // Si se encuentra el producto, se asigna
+          this.product = data;  // Asigna el producto si se encuentra
         },
-        error: () => {
-          console.log('Producto no encontrado o error');
+        error: (err) => {
+          console.error('Producto no encontrado o error:', err.message);
           this.product = null;  // Producto no encontrado, `product` es null
         }
       });
