@@ -15,7 +15,6 @@ import { BasketProductComponent } from '../basket-product/basket-product.compone
 })
 export class ProductDetailComponent implements OnInit {
   product: ProductResponse | null = null;
-  isProductLoaded: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,19 +34,16 @@ export class ProductDetailComponent implements OnInit {
       this.productService.getProductById(productId).subscribe({
         next: (data: ProductResponse) => {
           console.log('Producto encontrado:', data);
-          this.product = data;
-          this.isProductLoaded = true;  // Carga completa en caso de éxito
+          this.product = data;  // Si se encuentra el producto, se asigna
         },
         error: () => {
           console.log('Producto no encontrado o error');
-          this.product = null;  // Producto no encontrado
-          this.isProductLoaded = true;  // Carga completa en caso de error
+          this.product = null;  // Producto no encontrado, `product` es null
         }
       });
     } else {
       console.log('No se proporcionó un ID de producto');
-      this.product = null;
-      this.isProductLoaded = true;  // Carga completa si no hay ID
+      this.product = null;  // No hay ID, `product` es null
     }
   }
 }
