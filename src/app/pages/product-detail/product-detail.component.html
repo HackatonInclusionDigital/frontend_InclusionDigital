@@ -1,27 +1,34 @@
-<div class="flex flex-col ">
+<div class="flex flex-col">
+  <app-nav-bar></app-nav-bar>
 
-<app-nav-bar></app-nav-bar>
-
-<div *ngIf="product" class="container mx-auto p-4 flex justify-center items-center pt-20 mt-9">
-  <div class="img mr-9">
-    <img src="/assets/product.jpeg" alt="" class="w-full object-cover">
+  <!-- Mostrar si el producto está cargado y disponible -->
+  <div *ngIf="isProductLoaded && product" class="container mx-auto p-4 flex justify-center items-center pt-20 mt-9">
+    <div class="img mr-9">
+      <img src="/assets/product.jpeg" alt="" class="w-full object-cover">
+    </div>
+    <div class="descripcion flex flex-col items-center bg-white shadow-md rounded-lg p-8">
+      <h2 class="text-2xl font-bold mb-2">{{ product.nombre }}</h2>
+      <p class="text-gray-500 mb-4">{{ product.descripcion }}</p>
+      <p class="text-gray-700">Precio: S/ {{ product.precio }}</p>
+      <p class="text-gray-600">Stock: {{ product.stock }}</p>
+      <p class="text-gray-600">Categoría: {{ product.categoria }}</p>
+      <button class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              (click)="addToBasket()">
+        Agregar al carrito
+      </button>
+    </div>
   </div>
-  <div class="descripcion flex flex-col items-center bg-white shadow-md rounded-lg p-8">
-    <h2 class="text-2xl font-bold mb-2">{{ product.nombre }}</h2>
-    <p class="text-gray-500 mb-4">{{ product.descripcion }}</p>
-    <p class="text-gray-700">Precio: S/ {{ product.precio }}</p>
-    <p class="text-gray-600">Stock: {{ product.stock }}</p>
-    <p class="text-gray-600">Categoría: {{ product.categoria }}</p>
-    <button class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-            (click)="addToBasket()">
-      Agregar al carrito
+
+  <!-- Mostrar si el producto no está disponible -->
+  <div *ngIf="isProductLoaded && !product" class="container mx-auto p-4 flex flex-col items-center justify-center pt-20 mt-9 text-center bg-gray-100 rounded-lg shadow-md">
+    <img src="/assets/no-product.png" alt="Sin producto" class="w-32 h-32 mb-4">
+    <h2 class="text-2xl font-semibold text-gray-700 mb-2">Producto no disponible</h2>
+    <p class="text-gray-500 mb-4">El producto que estás buscando no se encuentra disponible en este momento.</p>
+    <button routerLink="/" class="mt-2 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+      Volver a inicio
     </button>
   </div>
 </div>
 
 <!-- Componente de carrito de compras -->
 <app-basket-product></app-basket-product>
-  
-</div>
-
-  

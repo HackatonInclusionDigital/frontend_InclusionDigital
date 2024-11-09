@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-basket-product',
+  standalone: true,
   templateUrl: './basket-product.component.html',
   imports: [CommonModule],
   styleUrls: ['./basket-product.component.css']

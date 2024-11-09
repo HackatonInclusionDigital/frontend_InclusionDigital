@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductResponse } from './../../interfaces/productResponse.interface';
 import { ProductService } from './../../services/product.service';
-import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../nav-bar/nav-bar.component';
 import { BasketProductComponent } from '../basket-product/basket-product.component';
@@ -12,10 +11,11 @@ import { BasketProductComponent } from '../basket-product/basket-product.compone
   standalone: true,
   imports: [CommonModule, NavbarComponent, BasketProductComponent],
   templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.css'
+  styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() product!: ProductResponse;
+  product: ProductResponse | null = null;
+  isProductLoaded: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,14 +23,31 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   addToBasket(): void {
-    this.productService.addProductToBasket(this.product);
+    if (this.product) {
+      this.productService.addProductToBasket(this.product);
+    }
   }
+
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));
+
     if (productId) {
-      this.productService.getProductById(productId).subscribe((data: ProductResponse) => {
-        this.product = data;
+      this.productService.getProductById(productId).subscribe({
+        next: (data: ProductResponse) => {
+          console.log('Producto encontrado:', data);
+          this.product = data;
+          this.isProductLoaded = true;  // Carga completa en caso de éxito
+        },
+        error: () => {
+          console.log('Producto no encontrado o error');
+          this.product = null;  // Producto no encontrado
+          this.isProductLoaded = true;  // Carga completa en caso de error
+        }
       });
+    } else {
+      console.log('No se proporcionó un ID de producto');
+      this.product = null;
+      this.isProductLoaded = true;  // Carga completa si no hay ID
     }
   }
 }
