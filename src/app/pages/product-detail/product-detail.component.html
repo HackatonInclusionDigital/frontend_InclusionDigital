@@ -4,7 +4,10 @@
   <!-- Mostrar si el producto está cargado y disponible -->
   <div *ngIf="product" class="container mx-auto p-4 flex justify-center items-center pt-20 mt-9">
     <div class="img mr-9">
-      <img src="/assets/product.jpeg" alt="" class="w-full object-cover">
+      <img *ngIf="product.imagenes && product.imagenes.length > 0"
+                    [src]="'http://localhost:3000/' + product.imagenes[0]"
+                    alt="Primera imagen del producto"
+                    class="w-full h-auto">
     </div>
     <div class="descripcion flex flex-col items-center bg-white shadow-md rounded-lg p-8">
       <h2 class="text-2xl font-bold mb-2">{{ product.nombre }}</h2>
@@ -17,9 +20,9 @@
         Agregar al carrito
       </button>
     </div>
-    
+
   </div>
-  
+
   <!-- Mostrar si el producto no está disponible -->
   <div *ngIf="!product" class="container mx-auto p-4 flex flex-col items-center justify-center pt-20 mt-9 text-center bg-gray-100 rounded-lg shadow-md">
    <h2 class="text-2xl font-semibold text-gray-700 mb-2">Producto no disponible</h2>
@@ -29,9 +32,9 @@
      Volver a inicio
    </button>
    </a>
-   
+
  </div>
- 
+
 </div>
 
 <!-- Componente de carrito de compras -->

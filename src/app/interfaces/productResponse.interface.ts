@@ -7,6 +7,7 @@ export interface ProductResponse {
     stock: number;
     categoria: string;
     usuario_id:string;
+    imagenes: string[];
     fecha_creacion: string
     fecha_actualizacion: string;
     __v: number;

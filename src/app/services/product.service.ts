@@ -33,7 +33,7 @@ export class ProductService {
     );
   }
 
-  postRegisterProduct(product: ProductRequest): Observable<ProductResponse> {
+  postRegisterProduct(product: FormData): Observable<any> {
     return this.http.post<ProductResponse>(`${this.baseURL}products`, product);
   }
   getProductById(id: String): Observable<ProductResponse> {
